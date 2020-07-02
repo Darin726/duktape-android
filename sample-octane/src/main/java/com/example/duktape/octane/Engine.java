@@ -21,15 +21,6 @@ import java.io.Closeable;
 
 public enum Engine {
   // Keep order (and thus ordinal) in sync with strings.xml 'engines' array.
-  DUKTAPE {
-    @Override Closeable create() {
-      return Duktape.create();
-    }
-
-    @Override Object evaluate(Object instance, String script, String fileName) {
-      return ((Duktape) instance).evaluate(script, fileName);
-    }
-  },
   QUICK_JS {
     @Override Closeable create() {
       return QuickJs.create();
@@ -37,6 +28,15 @@ public enum Engine {
 
     @Override Object evaluate(Object instance, String script, String fileName) {
       return ((QuickJs) instance).evaluate(script, fileName);
+    }
+  },
+  DUKTAPE {
+    @Override Closeable create() {
+      return Duktape.create();
+    }
+
+    @Override Object evaluate(Object instance, String script, String fileName) {
+      return ((Duktape) instance).evaluate(script, fileName);
     }
   };
 
